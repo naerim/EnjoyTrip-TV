@@ -1,6 +1,13 @@
 body{
     height: 100%;
 }
+
+section {
+    padding-top: 140px;
+    width: 80%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 .top h2,.top p{
     color: rgb(134, 132, 132);
     text-align: center;
@@ -13,7 +20,7 @@ body{
     background-color: rgb(92, 175, 238)
 }
 .top{
-    margin: 10px auto;;
+    margin: 20px auto;;
 }
 .ellipsis {
     overflow: hidden;
