@@ -112,6 +112,7 @@ section {
 #content-myregion-info h1 {
   font-size: 2em;
   text-align: center;
+  color: #444444;
 }
 
 #content-myregion-info h2 {
@@ -156,4 +157,5 @@ section {
   text-align: center;
   padding: 8px;
   margin: 10px auto 0;
+  cursor: pointer;
 }
