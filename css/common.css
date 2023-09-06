@@ -38,6 +38,12 @@ header a {
 
 header #logo {
   font-size: 2.2em;
+  box-sizing: border-box;
+}
+
+#menulist {
+  display: flex;
+  box-sizing: border-box;
 }
 
 footer {
@@ -63,4 +69,62 @@ footer #footer-right {
 
 footer #footer-right p {
   margin-bottom: 20px;
+}
+
+/* tablet */
+@media screen and (max-width: 936px) {
+  header {
+    width: 100%;
+    position: static;
+  }
+  header .header-container {
+    flex-direction: column;
+    height: 70px;
+    line-height: 70px;
+    width: 100%;
+  }
+  header #logo {
+    font-size: 2em;
+    text-align: center;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 10px 10px -10px gray;
+    box-sizing: border-box;
+    top: 0;
+  }
+  #menulist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    height: 40x;
+    line-height: 40px;
+    margin-top: 70px;
+  }
+  #menuitem {
+    display: flex;
+    width: 100%;
+    padding: 5px 0;
+    align-items: center;
+    justify-content: center;
+  }
+  #menuitem:hover {
+    background-color: #f2f2f2;
+  }
+  footer #footer-right {
+    margin-left: 0;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 767px) {
+  footer {
+    height: auto;
+    padding: 20px 0;
+  }
+  footer .footer-container {
+    flex-direction: column;
+  }
 }
