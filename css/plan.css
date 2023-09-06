@@ -1,0 +1,24 @@
+body{
+    height: 100%;
+}
+.top h2,.top p{
+    color: rgb(134, 132, 132);
+    text-align: center;
+}
+
+.underLine{
+    border-radius: 2px;
+    height: 5px;
+    max-width: 3cm;
+    background-color: rgb(92, 175, 238)
+}
+.top{
+    margin: 10px auto;;
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
