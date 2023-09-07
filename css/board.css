@@ -1,64 +1,64 @@
 section {
-    padding-top: 140px;
-    width: 100%;
-
+  padding-top: 220px;
+  width: 100%;
 }
 
 table {
-    width: 80% !important;
-    max-width: 1400px;
+  width: 80% !important;
+  max-width: 1400px;
 }
 
 article {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 section article:nth-child(2) {
-    background: #F9FBFC;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  background: #f9fbfc;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 #btnBox {
-    /* display: none; */
-    padding-top: 50px;
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: center;
+  /* display: none; */
+  padding-top: 80px;
+  padding-bottom: 180px;
+  display: flex;
+  justify-content: center;
 }
 
 #btnBox button {
-    color: #FFF;
-    font-weight: bold;
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    background: #772CF0;
+  color: #fff;
+  font-weight: bold;
+  width: 170px;
+  height: 50px;
+  border-radius: 10px;
+  background: #772cf0;
+  border: none;
+  font-size: 1.2em;
 }
 
 #btnBox button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #ment,
 #subment {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-#ment p {
-    font-size: 3em;
-    font-weight: 600px;
+#ment h2 {
+  font-size: 3em;
+  font-weight: 700;
 }
 
-#subment p {
-    font-size: 2em;
-    font-weight: 600px;
-    color: #8B95A1;
+#subment h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #8b95a1;
 }

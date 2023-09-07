@@ -1,61 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/tourinfo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <title>지역관광정보</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/tourinfo.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./css/common.css" />
-  <title>지역관광정보</title>
-</head>
-
-<body>
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div id="logo"><a href="/">Enjoy Trip</a></div>
-      <div id="menulist">
-        <div id="menuitem"><a href="tourinfo.html">지역별여행지</a></div>
-        <div id="menuitem"><a href="plan.html">나의여행계획</a></div>
-        <div id="menuitem"><a href="board.html">여행정보공유</a></div>
-        <div id="menuitem"><a href="">회원가입</a></div>
-        <div id="menuitem"><a href="">로그인</a></div>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div id="logo"><a href="/">Enjoy Trip</a></div>
+        <div id="menulist">
+          <div id="menuitem"><a href="tourinfo.html">지역별여행지</a></div>
+          <div id="menuitem"><a href="plan.html">나의여행계획</a></div>
+          <div id="menuitem"><a href="board.html">여행정보공유</a></div>
+          <div id="menuitem"><a href="">회원가입</a></div>
+          <div id="menuitem"><a href="">로그인</a></div>
+        </div>
       </div>
-    </div>
-  </header>
-  <!-- Contents -->
-  <section>
-    <div class="ment box">
-      <span>여행 가고 싶은 지역을</span>
-      <span>검색해보세요.</span>
-    </div>
-    <div id="searchBox" class="box">
-      <input id="searchInput" type="text" /><img id="searchImg" src="./img/tourinfo/magnifying-glass-solid.png"
-        alt="" />
-    </div>
-
-    <div id="mapBox">
-      <div class="map"></div>
-    </div>
-
-
-
-
-    <div id="youtubeBox" class="box">
-      <p>바로 유튜브에서 찾아볼까요?</p>
-      <p>선택한 관광지의 영상을 확인할 수 있어요.</p>
-      <div id="btnBox">
-        <button id="utBtn">검색하기</button>
+    </header>
+    <!-- Contents -->
+    <section>
+      <div class="ment box">
+        <h2>여행 가고 싶은 지역을</h2>
+        <h2>검색해보세요.</h2>
       </div>
-      <div id="flexBox">
-
+      <div id="searchBox" class="box">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="무엇이든 찾아보세요"
+        /><img
+          id="searchImg"
+          src="./img/tourinfo/magnifying-glass-solid.png"
+          alt=""
+        />
       </div>
-    </div>
-  </section>
-</body>
 
+      <div id="mapBox">
+        <div class="map"></div>
+      </div>
+
+      <div id="youtubeBox" class="box">
+        <p>바로 유튜브에서 찾아볼까요?</p>
+        <p>선택한 관광지의 영상을 확인할 수 있어요.</p>
+        <div id="btnBox">
+          <button id="utBtn">검색하기</button>
+        </div>
+        <div id="flexBox"></div>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div>
+          <img src="./img/ssafy_logo.png" alt="" />
+        </div>
+        <div id="footer-right">
+          <p>이용약관 | 개인정보방침</p>
+          <div>
+            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포
+            등을 금합니다.
+          </div>
+          <div>Copyright © SAMSUNG All Rights Reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
