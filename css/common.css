@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  font-family: "Inter", sans-serif;
 }
 
 input[type="button"],
@@ -15,7 +16,6 @@ header {
   position: fixed;
   width: 100%;
   box-shadow: 0 10px 10px -10px gray;
-  margin-bottom: 40px;
   background-color: #fff;
 }
 
@@ -23,27 +23,33 @@ header .header-container {
   display: flex;
   justify-content: space-between;
   width: 80%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  height: 100px;
-  line-height: 100px;
+  height: 70px;
+  line-height: 70px;
 }
 
 header a {
   text-decoration: none;
-  color: #787776;
+  color: #454545;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 34px;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 
-header #logo {
-  font-size: 2.2em;
+header #logo a {
+  font-size: 1.6em;
   box-sizing: border-box;
+  color: rgba(119, 44, 240, 1);
+  font-weight: bold;
+  margin-left: 0;
 }
 
 #menulist {
   display: flex;
   box-sizing: border-box;
+  color: #454545;
 }
 
 footer {
