@@ -12,6 +12,21 @@
     />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/80680301df.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -39,9 +54,17 @@
             <div id="banner-plan-btn">여행 계획하러가기</div>
           </div>
         </div>
+        <a href="#main-desc">
+          <i
+            class="fa-regular fa-circle-down fa-3x"
+            style="color: #ffffff"
+            id="banner-arrow-down"
+          ></i
+        ></a>
       </article>
       <!-- 설명 article -->
       <article id="main-desc">
+        <a id="main-desc"></a>
         <div>
           <h2>지금 <b>Enjoy Trip</b>과 함께</h2>
           <h2>최고의 휴일을 같이 보내볼까요?</h2>
@@ -56,14 +79,324 @@
             <h2>우리지역의 숨어있는</h2>
             <h2>아름다운 관광지를 알려드립니다.</h2>
           </div>
+          <div id="main-tourinfo-list">
+            <div id="main-tourinfo-card">
+              <div id="tourinfo-imgDiv">
+                <img src="./img/myregion/m-region-1.jpg" alt="" />
+              </div>
+              <div id="tourinfo-text">
+                <h2>해운대 그린레일웨이</h2>
+                <p>
+                  기찻길 따라 각양각색 해안절경을 담을 수 있는 부산그린레일웨이
+                  산책로기찻길 따라 각양각색 해안절경을 담을 수 있는
+                  부산그린레일웨이 산책로
+                </p>
+              </div>
+            </div>
+            <div id="main-tourinfo-card">
+              <div id="tourinfo-imgDiv">
+                <img src="./img/myregion/m-region-2.jpg" alt="" />
+              </div>
+              <div id="tourinfo-text">
+                <h2>해운대 그린레일웨이</h2>
+                <p>
+                  기찻길 따라 각양각색 해안절경을 담을 수 있는 부산그린레일웨이
+                  산책로기찻길 따라 각양각색 해안절경을 담을 수 있는
+                  부산그린레일웨이 산책로
+                </p>
+              </div>
+            </div>
+            <div id="main-tourinfo-card">
+              <div id="tourinfo-imgDiv">
+                <img src="./img/myregion/m-region-3.jpg" alt="" />
+              </div>
+              <div id="tourinfo-text">
+                <h2>해운대 그린레일웨이</h2>
+                <p>
+                  기찻길 따라 각양각색 해안절경을 담을 수 있는 부산그린레일웨이
+                  산책로기찻길 따라 각양각색 해안절경을 담을 수 있는
+                  부산그린레일웨이 산책로
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
       <!-- 나만의 여행계획 -->
       <article id="main-myplan">
         <div id="main-myplan-container">
           <h2 class="main-article-title">나만의 여행계획</h2>
-          <div class="main-article-desc">
+          <div class="main-article-desc" id="main-myplan-desc">
             <h2>어디로 가볼까요?</h2>
+          </div>
+          <div
+            id="demo main-myplan-carousel"
+            class="carousel carousel-dark slide"
+            data-bs-ride="carousel"
+          >
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators m-0">
+              <button
+                type="button"
+                data-bs-target="#demo"
+                data-bs-slide-to="0"
+                class="active"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#demo"
+                data-bs-slide-to="1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#demo"
+                data-bs-slide-to="2"
+              ></button>
+            </div>
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item mb-5 active">
+                <div class="row g-5">
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">신혼여행코스</h5>
+                        <div class="ellipsis card-text">
+                          위 경로처럼 가려는데 어떨까요? 조언부탁드려요!
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">심심하신분 모이세요</h5>
+                        <div class="ellipsis card-text">
+                          7일코스 전국을 누비며 우리나라에 숨어있는 아름다운
+                          명소 돌아 다니실 분!!! 인원 모집하고 금액이나 경로
+                          정하려 합니다. 지원해주세요.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">군대투어</h5>
+                        <div class="ellipsis card-text">
+                          본인이 다녀온 군부대를 중심으로 돌아다니는 군대투어~~
+                          다녀오지 않으신분들은 구경가봐요!!
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">심심하면 떠나자</h5>
+                        <div class="ellipsis card-text">
+                          북한을 제외한 8도를 돌아다니는 여행으로 건강도 챙기고
+                          맨탈도 챙기는 트레킹 코스입니다. 함께하실 분은
+                          연락주세요!
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item mb-5">
+                <div class="row g-5">
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">혼자 여행하기 좋은 곳 추천</h5>
+                        <div class="ellipsis card-text">
+                          혼자 여행하기 좋은 코스 추천합니다.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">서해 여행</h5>
+                        <div class="ellipsis card-text">
+                          우리나라 서해는 잔잔한 물결에 노을을 보면서 힐링하기
+                          좋은데요. 오늘은 그 명소들을 추천하겠습니다.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">광주 싸피 여행</h5>
+                        <div class="ellipsis card-text">
+                          싸피 광주캠은 보안이 아주 심해서 여행으로 부적격이지만
+                          입과만 하신다면 광주의 맛있는 밥을 먹을 수 있습니다.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <div class="ellipsis card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item mb-5">
+                <div class="row g-5">
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">전북 익산 여행</h5>
+                        <div class="ellipsis card-text">
+                          보석의 도시 익산여행 코스 공유합니다. 익산은 보석이
+                          유명하다는데요 닉값을 하는 만큼 사리가 나왔다고
+                          합니다.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <div class="ellipsis card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <div class="ellipsis card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="card">
+                      <img
+                        src="./img/no_image_icon.png"
+                        class="card-img-top"
+                        alt=""
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <div class="ellipsis card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </div>
+                        <a href="#" class="btn btn-sm mt-3 btn-primary"
+                          >더보기...</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -77,11 +410,17 @@
         <div id="footer-right">
           <p>이용약관 | 개인정보방침</p>
           <div>
-            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포
+            등을 금합니다.
           </div>
           <div>Copyright © SAMSUNG All Rights Reserved.</div>
         </div>
       </div>
     </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

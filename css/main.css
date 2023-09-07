@@ -16,6 +16,7 @@
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 #banner-left {
@@ -44,6 +45,25 @@
   border-radius: 0.6em;
 }
 
+#banner-arrow-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bounce 0.3s ease-out 0s 15 alternate;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0% {
+    bottom: 0px;
+  }
+  100% {
+    bottom: 20px;
+  }
+}
+
 /* 첫번째 article */
 #main-desc {
   background-color: #f9fbfc;
@@ -66,9 +86,10 @@
 #main-tourinfo {
   width: 100%;
   background-color: #fff;
-  height: 140vh;
+  height: auto;
   display: flex;
   flex-direction: column;
+  padding-bottom: 140px;
 }
 
 #main-tourinfo-container {
@@ -76,6 +97,69 @@
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 100px;
+}
+
+#main-tourinfo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+#main-tourinfo-card {
+  min-width: 402px;
+  width: 41%;
+  height: 520px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+#main-tourinfo-card:nth-child(2) {
+  transform: translateY(260px);
+}
+
+#main-tourinfo-card:last-child {
+  margin-top: 180px;
+}
+
+#main-tourinfo-card #tourinfo-imgDiv {
+  width: 100%;
+  height: 64%;
+}
+
+#main-tourinfo-card #tourinfo-imgDiv img {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#main-tourinfo-card #tourinfo-text {
+  width: 80%;
+  margin: 20px auto 0;
+}
+
+#main-tourinfo-card h2 {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.4em;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#main-tourinfo-card p {
+  color: #8b95a1;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 10px;
 }
 
 .main-article-title {
@@ -94,9 +178,10 @@
 #main-myplan {
   width: 100%;
   background-color: #f9fbfc;
-  height: 140vh;
+  height: auto;
   display: flex;
   flex-direction: column;
+  padding-bottom: 140px;
 }
 
 #main-myplan-container {
@@ -104,6 +189,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 100px;
+}
+
+#main-myplan-desc {
+  margin-bottom: 100px;
 }
 
 /* #content-myregion-info {
@@ -175,59 +264,74 @@
   }
 }
 
-@media screen and (max-width: 1390px) {
+/* @media screen and (max-width: 1390px) {
   #myregion-list #card {
     width: 23%;
+  }
+} */
+
+@media screen and (max-width: 1018px) {
+  #main-tourinfo-container {
+    margin: 0 0 0 auto;
+  }
+  #main-tourinfo-list {
+    flex-wrap: nowrap;
+    overflow: scroll;
+    padding: 20px;
+  }
+  #main-tourinfo-card {
+    max-width: 180px;
+    width: 30%;
+    margin-right: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    position: static;
+  }
+  #main-tourinfo-card:nth-child(2) {
+    transform: translateY(0);
+  }
+  #main-tourinfo-card:last-child {
+    margin-top: 0;
   }
 }
 
 /* tablet */
-@media screen and (max-width: 936px) {
-  #banner-container {
-    flex-direction: column;
-    padding-top: 300px;
+@media screen and (max-width: 810px) {
+  #banner-left h2 {
+    font-size: 2.2em;
   }
-  #banner-left h3 {
-    margin-top: 40px;
-  }
-  #banner #contact {
-    display: none;
-  }
-  #content-myregion-info h1 {
-    font-size: 1.8em;
-  }
-  #content-myregion-info h2 {
-    font-size: 1.2em;
-  }
-  #myregion-list {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  #myregion-list #card {
-    width: 48%;
-    margin-bottom: 40px;
+  #main-desc {
+    font-size: 1em;
   }
 }
 
-/* mobile */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 580px) {
   #banner-left h2 {
     font-size: 1.4em;
   }
-  #banner-left h3 {
-    font-size: 0.8em;
+  #main-desc {
+    font-size: 0.7em;
+    height: 50vh;
   }
-  #myregion-list {
-    flex-direction: column;
-    align-items: center;
+  #main-tourinfo-container {
+    margin: 0 auto;
   }
-  #myregion-list #card {
-    flex-direction: column;
+  #main-tourinfo-list {
     width: 100%;
-    max-width: 300px;
-  }
-  #content-myregion-info {
-    margin-top: 20px;
+    flex-direction: column;
     padding: 0;
+    box-sizing: border-box;
+  }
+  #main-tourinfo-card {
+    min-width: 100%;
+    margin-right: 0px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 40px;
+  }
+
+  .main-article-title {
+    font-size: 1.2em;
+  }
+  .main-article-desc h2 {
+    font-size: 1.6em;
   }
 }
