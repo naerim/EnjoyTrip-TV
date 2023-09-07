@@ -1,0 +1,41 @@
+.box{
+    margin-bottom: 50px;
+}
+section{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+.ment{
+    margin-left: auto;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.ment span{
+    font-size: 3em;
+    font-weight: 600px;
+}
+#searchBox{
+    font-size: 2em;
+    padding-left: 70px;
+    outline: none;
+    width: 100%;
+    height: 50px;
+    border-width: 0 0 1px;
+    position:absolute;
+    box-shadow: 10px;
+}
+#searchImg{
+    position: relative;
+    left: 0;
+    bottom: 5px;
+    height: 50px;
+    width: 50px;
+}
+#searchImg:hover{
+    cursor: pointer;
+}
