@@ -23,16 +23,17 @@ section article:nth-child(2) {
 
 #btnBox {
   /* display: none; */
-  padding-top: 80px;
-  padding-bottom: 180px;
+  padding-top: 100px;
+  padding-bottom: 200px;
   display: flex;
   justify-content: center;
+  animation: fadein 3s;
 }
 
 #btnBox button {
   color: #fff;
   font-weight: bold;
-  width: 170px;
+  width: 140px;
   height: 50px;
   border-radius: 10px;
   background: #772cf0;
@@ -50,6 +51,7 @@ section article:nth-child(2) {
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  animation: fadein 3s;
 }
 
 #ment h2 {
@@ -61,4 +63,13 @@ section article:nth-child(2) {
   font-size: 1.6em;
   font-weight: 600;
   color: #8b95a1;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
