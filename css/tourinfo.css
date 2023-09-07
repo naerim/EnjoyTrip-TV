@@ -1,41 +1,105 @@
-.box{
+.box {
     margin-bottom: 50px;
 }
-section{
+
+section {
+    box-sizing: border-box;
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 200px;
 }
-.ment{
+
+.ment {
     margin-left: auto;
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
 }
 
-.ment span{
+.ment span {
     font-size: 3em;
     font-weight: 600px;
 }
-#searchBox{
-    font-size: 2em;
-    padding-left: 70px;
+
+#searchBox {
+    width: 70%;
+    overflow: hidden;
+    margin-inline: auto;
+}
+
+#searchInput {
+    box-sizing: border-box;
     outline: none;
+    border-width: 0 0 1px;
+    padding-left: 70px;
+    font-size: 2em;
     width: 100%;
     height: 50px;
-    border-width: 0 0 1px;
-    position:absolute;
-    box-shadow: 10px;
+    position: relative;
 }
-#searchImg{
+
+#searchImg {
     position: relative;
     left: 0;
-    bottom: 5px;
-    height: 50px;
-    width: 50px;
+    bottom: 45px;
+    left: 15px;
+
+    height: 40px;
+    width: 40px;
 }
-#searchImg:hover{
+
+#searchImg:hover {
+    cursor: pointer;
+}
+
+#mapBox {
+    margin-inline: auto;
+    width: 800px;
+    height: 450px;
+    border: 5px solid black;
+}
+
+#youtubeBox {
+    padding-top: 50px;
+    background: #F9FBFC;
+}
+
+#youtubeBox p {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 600px;
+}
+
+#youtubeBox p:nth-child(2) {
+    font-size: 2em;
+    font-weight: 600px;
+    color: #8B95A1;
+}
+
+#btnBox {
+    /* display: none; */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#utBtn {
+    /* js에서 display:none으로 변경시 btnBox도 함께해야한다. 공간을 차지하기 때문. */
+    /* display: none; */
+}
+
+#btnBox button {
+    color: #FFF;
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background: #772CF0;
+}
+
+#btnBox button:hover {
     cursor: pointer;
 }
