@@ -61,10 +61,13 @@ section {
   width: 100%;
   height: 600px;
   /* border: 5px solid black; */
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   margin-bottom: 100px;
 }
-
+#map{
+  width: 100%;
+  height: 100%;
+}
 #youtubeBox {
   padding-top: 100px;
   background: #f9fbfc;
