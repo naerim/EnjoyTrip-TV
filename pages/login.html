@@ -6,7 +6,10 @@
     <title>로그인</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/auth.css" />
-    <script src="https://kit.fontawesome.com/80680301df.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/80680301df.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Header -->
@@ -21,7 +24,11 @@
           <div id="menuitem"><a href="login.html">로그인</a></div>
         </div>
       </div>
-      <i class="fa-solid fa-bars fa-2x" style="color: #454545" id="hamburger"></i>
+      <i
+        class="fa-solid fa-bars fa-2x"
+        style="color: #454545"
+        id="hamburger"
+      ></i>
     </header>
     <!-- main section -->
     <section>
@@ -33,15 +40,19 @@
       <form action="#" method="post" id="auth-form-container">
         <div class="auth-input-box">
           <div class="input-title">아이디</div>
-          <input type="text" />
+          <input type="text" name="userId" id="userId" required autofocus />
         </div>
         <div class="auth-input-box">
           <div class="input-title">비밀번호</div>
-          <input type="password" />
+          <input type="password" name="userPwd" id="userPwd" required />
         </div>
         <!-- 버튼 영역 -->
-        <div class="auth-btn-box"><input type="submit" value="로그인" /></div>
-        <a href="signup.html" id="login-href"><p>회원이 아니신가요? 여기를 클릭해주세요.</p></a>
+        <div class="auth-btn-box">
+          <input type="submit" value="로그인" id="login-btn" />
+        </div>
+        <a href="signup.html" id="withdraw-btn"
+          ><p>회원이 아니신가요? 여기를 클릭해주세요.</p></a
+        >
       </form>
     </section>
     <!-- footer -->
@@ -53,12 +64,15 @@
         <div id="footer-right">
           <p>이용약관 | 개인정보방침</p>
           <div>
-            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포
+            등을 금합니다.
           </div>
           <div>Copyright © SAMSUNG All Rights Reserved.</div>
         </div>
       </div>
     </footer>
+    <!-- login script -->
+    <script type="text/javascript" src="../js/login.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
   </body>
 </html>

@@ -23,6 +23,10 @@ section {
   margin-top: 10px;
 }
 
+input:read-only {
+  background-color: #f2f2f2;
+}
+
 #auth-mypage {
   display: flex;
   justify-content: space-between;
@@ -110,7 +114,7 @@ section {
   font-weight: 600;
 }
 
-#login-href {
+#withdraw-btn {
   margin: 10px;
   text-align: center;
   text-decoration: none;
