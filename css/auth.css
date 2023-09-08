@@ -119,6 +119,22 @@ section {
   margin-top: 20px;
 }
 
+.id-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.id-box input[type="text"] {
+  width: 80%;
+}
+
+.id-box input[type="button"] {
+  width: 18%;
+  background-color: #772cf0;
+  color: #fff;
+  border: none;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;

@@ -21,6 +21,7 @@ header {
 }
 
 header .header-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 80%;
@@ -28,6 +29,11 @@ header .header-container {
   margin: 0 auto;
   height: 70px;
   line-height: 70px;
+}
+
+#hamburger {
+  display: none;
+  cursor: pointer;
 }
 
 header a {
@@ -125,11 +131,23 @@ footer #footer-right p {
     justify-content: center;
     text-align: center;
   }
+
+  #menulist.open {
+    display: none;
+  }
   #menuitem:hover {
     background-color: #f2f2f2;
   }
   footer #footer-right {
     margin-left: 0;
+  }
+  #hamburger {
+    position: absolute;
+    display: block;
+    top: 0;
+    z-index: 200;
+    line-height: 70px;
+    right: 30px;
   }
 }
 
