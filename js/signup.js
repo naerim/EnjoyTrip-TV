@@ -61,8 +61,8 @@ document.querySelector("#signup-btn").addEventListener("click", function (e) {
     alert("비밀번호가 일치하지 않습니다.");
     userPwdChk.focus() = true;
     return;
-    }
-    
+  }
+
     let member = {
         userId: userId.value,
         username: username.value,
@@ -70,21 +70,23 @@ document.querySelector("#signup-btn").addEventListener("click", function (e) {
         email1: email1.value,
         email2: email2.value,
         region1: region1.value,
-        region2: region2.value
+        region1_name: region1.options[region1.selectedIndex].text,
+        region2: region2.value,
+        region2_name: region2.options[region2.selectedIndex].text,
     }
     
     console.log(member);
-    // window.localStorage.setItem("member", JSON.stringify(member));
+    window.localStorage.setItem("member", JSON.stringify(member));
     
-    // let localMembers = window.localStorage.getItem("members");
-    // if (localMembers === null) {
-    //     localMembers = [member];
-    //   } else {
-    //     localMembers = JSON.parse(localMembers);
-    //     localMembers.push(member);  
-    //   }
-    //   window.localStorage.setItem("members", JSON.stringify(localMembers));
+    let localMembers = window.localStorage.getItem("members");
+    if (localMembers === null) {
+        localMembers = [member];
+      } else {
+        localMembers = JSON.parse(localMembers);
+        localMembers.push(member);  
+      }
+      window.localStorage.setItem("members", JSON.stringify(localMembers));
 
-    //   alert(`${username}님 "${userId}" 아이디로 가입 정상 완료하였습니다.\n로그인 후 회원 전용 서비스를 이용하시기 바랍니다.`);
-    //   location.href = "login.html";
+      alert(`${username}님 "${userId}" 아이디로 가입 정상 완료하였습니다.\n로그인 후 회원 전용 서비스를 이용하시기 바랍니다.`);
+      location.href = "login.html";
 });

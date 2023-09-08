@@ -92,6 +92,7 @@
     <script src="https://kit.fontawesome.com/80680301df.js" crossorigin="anonymous"></script>
     <script>
       // 모든 지역정보를 가져올 url설정(공공데이터포털)
+      // 모든 지역정보를 가져올 url설정(공공데이터포털)
       let areaUrl =
         "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
         serviceKey +
@@ -102,13 +103,43 @@
 
       // 옵션에 값 채우기!
       function makeOption(data) {
+        // 지역을 선택한 상황
         let areas = data.response.body.items.item;
-        let sel = document.getElementById("region1");
+        let sel = document.querySelector("#region1");
         areas.forEach((area) => {
           let opt = document.createElement("option");
           opt.setAttribute("value", area.code);
+          opt.setAttribute("class", "opAreas");
           opt.appendChild(document.createTextNode(area.name));
+          sel.appendChild(opt);
+        });
+      }
 
+      // ===========지역변하면 시군구 받아오기======================
+      document.querySelector("#region1").addEventListener("change", (e) => {
+        let subOptionsLen = document.querySelector("#region1").options.length;
+        let target = e.target.value;
+        // 검색하면됨
+        let regionUrl =
+          "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
+          serviceKey +
+          `&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&areaCode=${target}&_type=json`;
+        fetch(regionUrl)
+          .then((response) => response.json())
+          .then((data) => makeSubOption(data));
+      });
+
+      function makeSubOption(data) {
+        let citys = data.response.body.items.item;
+        // console.log(city);
+        let sel = document.querySelector("#region2");
+        // 이전에 있던 값 지우기.
+        sel.innerHTML = '<option value="-1">시군구</option>';
+        citys.forEach((city) => {
+          let opt = document.createElement("option");
+          opt.setAttribute("value", city.code);
+          opt.setAttribute("class", "opcity");
+          opt.appendChild(document.createTextNode(city.name));
           sel.appendChild(opt);
         });
       }
