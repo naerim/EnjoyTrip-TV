@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script src="./js/key.js"></script>
     <link rel="stylesheet" href="./css/common.css" />
     <title>지역관광정보</title>
   </head>
@@ -30,10 +31,12 @@
     </header>
     <!-- Contents -->
     <section>
+      <!-- ment -->
       <div class="ment box">
         <h2>여행 가고 싶은 지역을</h2>
         <h2>검색해보세요.</h2>
       </div>
+      <!-- searchBar -->
       <div id="searchBox" class="box">
         <input id="searchInput" type="text" placeholder="무엇이든 찾아보세요" /><img
           id="searchImg"
@@ -42,6 +45,26 @@
         />
       </div>
 
+      <form id="search-form" action="#">
+        <select name="search-area" id="search-area" class="selectBox">
+          <option value="">지역</option>
+        </select>
+        <select name="search-content-id" id="search-content-id" class="selectBox">
+          <option value="">관광지 유형</option>
+          <option value="">관광지</option>
+          <option value="">문화시설</option>
+          <option value="">축제공연행사</option>
+          <option value="">여행코스</option>
+          <option value="">레포츠</option>
+          <option value="">숙박</option>
+          <option value="">쇼핑</option>
+          <option value="">음식점</option>
+        </select>
+        <input type="text" / class='selectBox' placeholder='검색어'>
+        <input type="button" value="검색" />
+      </form>
+
+      <!-- kakao map -->
       <div id="mapBox">
         <div class="map"></div>
       </div>
@@ -70,5 +93,33 @@
         </div>
       </div>
     </footer>
+    <!-- kakao api연결 -->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f969680d19602de1fea5ade9c6d7e784&libraries=services,clusterer,drawing"
+    ></script>
+    <script>
+      // 모든 지역정보를 가져올 url설정(공공데이터포털)
+      let areaUrl =
+        "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
+        serviceKey +
+        "&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json";
+      fetch(areaUrl)
+        .then((response) => response.json())
+        .then((data) => makeOption(data));
+
+      // 옵션에 값 채우기!
+      function makeOption(data) {
+        let areas = data.response.body.items.item;
+        let sel = document.getElementById("search-area");
+        areas.forEach((area) => {
+          let opt = document.createElement("option");
+          opt.setAttribute("value", area.code);
+          opt.appendChild(document.createTextNode(area.name));
+
+          sel.appendChild(opt);
+        });
+      }
+    </script>
   </body>
 </html>

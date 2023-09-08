@@ -119,3 +119,32 @@ section {
     opacity: 1;
   }
 }
+.selectBox option{
+  padding: 10px;
+  box-sizing: border-box;
+  width: 25%;
+  height: 40px;
+  border-radius: 6px;
+}
+.selectBox{
+  padding: 10px;
+  box-sizing: border-box;
+  width: 25%;
+  height: 40px;
+  border-radius: 6px;
+
+}
+#search-form{
+display: flex;
+margin-inline: auto;
+justify-content: space-evenly;
+  margin-bottom: 30px;
+  width: 80%;
+}
+#search-form input[type="button"]{
+  box-sizing: border-box;
+  width: 10%;
+  padding: 10px;
+  height: 40px;
+  border-radius: 6px;
+}
