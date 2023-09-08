@@ -3,7 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/auth.css" />
   </head>
-  <body></body>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div id="logo"><a href="/">Enjoy Trip</a></div>
+        <div id="menulist">
+          <div id="menuitem"><a href="tourinfo.html">지역별여행지</a></div>
+          <div id="menuitem"><a href="plan.html">나의여행계획</a></div>
+          <div id="menuitem"><a href="board.html">공유게시판</a></div>
+          <div id="menuitem"><a href="signup.html">회원가입</a></div>
+          <div id="menuitem"><a href="login.html">로그인</a></div>
+        </div>
+      </div>
+    </header>
+    <!-- main section -->
+    <section>
+      <div class="auth-top">
+        <h2>마이페이지</h2>
+        <div id="auth-mypage">
+          <h3>나의 정보를 수정하고 관리할 수 있어요.</h3>
+          <h4>로그아웃</h4>
+        </div>
+      </div>
+      <!-- form -->
+      <form action="#" method="post" id="auth-form-container">
+        <div class="auth-input-box">
+          <div class="input-title">이름</div>
+          <input type="text" value="태호티비" />
+        </div>
+        <div class="auth-input-box">
+          <div class="input-title">아이디</div>
+          <input type="text" value="taehotaeho" />
+        </div>
+        <div class="auth-input-box">
+          <div class="input-title">비밀번호</div>
+          <input type="password" />
+        </div>
+        <div class="auth-input-box">
+          <div class="input-title">비밀번호 확인</div>
+          <input type="password" />
+        </div>
+        <div class="auth-input-box">
+          <div class="input-title">이메일</div>
+          <div class="email-box"><input type="text" /> <span>@</span> <input type="text" /></div>
+        </div>
+        <div class="auth-input-box">
+          <div class="input-title">지역</div>
+          <div class="region-box">
+            <select name="region1" id="region1">
+              <option value="">경기도</option>
+            </select>
+            <select name="region2" id="region2">
+              <option value="">용인시</option>
+            </select>
+          </div>
+        </div>
+        <!-- 버튼 영역 -->
+        <div class="auth-btn-box"><input type="submit" value="수정하기" /></div>
+        <a href="" id="login-href"><p>회원 탈퇴하기</p></a>
+      </form>
+    </section>
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div>
+          <img src="./img/ssafy_logo.png" alt="" />
+        </div>
+        <div id="footer-right">
+          <p>이용약관 | 개인정보방침</p>
+          <div>
+            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.
+          </div>
+          <div>Copyright © SAMSUNG All Rights Reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
