@@ -19,6 +19,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/key.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.2.0.min.js"
+    ></script>
     <link rel="stylesheet" href="../css/common.css" />
     <title>지역관광정보</title>
   </head>
@@ -193,9 +197,9 @@
           // 관광유형
           let selectContent =
             document.querySelector("#search-content-id").value;
-          // console.log(selectArea)
-          // console.log(selectCity)
-          // console.log(selectContent)
+          console.log(selectArea);
+          console.log(selectCity);
+          console.log(selectContent);
 
           // 요청보내자 fetch
           let searchURL =
@@ -204,22 +208,14 @@
             `&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&contentTypeId=${selectContent}&areaCode=${selectArea}&sigunguCode=${selectCity}`;
           fetch(searchURL)
             .then((response) => response.json())
-
             .then((data) => {
-              addList(data);
-              // console.log(dataList)
+              // 받아온 관광데이터를 배열에 저장한다.
+              const curDatas = data.response.body.items.item;
+              curDatas.forEach((item) => dataList.push(item));
+
               showMarks();
             });
         });
-
-      // 받아온 관광데이터를 배열에 저장한다.
-      function addList(data) {
-        let curDatas = data.response.body.items.item;
-        curDatas.forEach((curData) => {
-          dataList.push(curData);
-        });
-      }
-
       //===============
       // 저장한 배열을 순회하면서 위도경도 가져와
 
@@ -240,46 +236,95 @@
         dataList.forEach((e) => {
           let obj = {
             title: e.title,
+            image: e.firstimage,
+            addr1: e.addr1,
             latlng: new kakao.maps.LatLng(e.mapy, e.mapx),
           };
           positions.push(obj);
-          // console.log(e.mapy); // 위도
-          // console.log(e.mapx); // 경도
         });
-        // console.log(positions)
+
         // 마커 이미지의 이미지 주소입니다
         var imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-        markList = [];
-        for (var i = 0; i < positions.length; i++) {
-          // 마커 이미지의 이미지 크기 입니다
-          var imageSize = new kakao.maps.Size(24, 35);
-
-          // 마커 이미지를 생성합니다
-          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-          // 마커를 생성합니다
+        positions.forEach((pos) => {
           var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
-            position: positions[i].latlng, // 마커를 표시할 위치
-            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
-            clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-          });
-          markList.push(marker);
-
-          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          var iwContent = `<div style="padding:5px;">${positions[i].title}</div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            iwRemoveable = true;
-          // 마커 위에 표시할 인포윈도우를 생성한다
-          var infowindow = new kakao.maps.InfoWindow({
-            content: iwContent, // 인포윈도우에 표시할 내용
-            removable: iwRemoveable,
+            position: pos.latlng, // 마커의 위치
           });
 
-          // 마커 위에 인포윈도우를 표시합니다
-        }
+          var overlay = new kakao.maps.CustomOverlay({
+            map: map,
+            yAnchor: 3,
+            position: marker.getPosition(),
+          });
+
+          let content = document.createElement("div");
+          content.className = "wrap";
+
+          let info = document.createElement("div");
+          info.className = "info";
+
+          let title = document.createElement("div");
+          title.className = "title";
+          title.innerText = pos.title;
+          let close = document.createElement("div");
+          close.className = "close";
+          close.addEventListener("click", () => overlay.setMap(null));
+
+          info.appendChild(title);
+          title.appendChild(close);
+
+          let body = document.createElement("div");
+          body.className = "body";
+          info.appendChild(body);
+
+          let imgDiv = document.createElement("div");
+          imgDiv.className = "img";
+          let img = document.createElement("img");
+          img.src =
+            pos.image ||
+            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png";
+          img.width = 73;
+          img.height = 70;
+          imgDiv.appendChild(img);
+
+          let desc = document.createElement("div");
+          desc.className = "desc";
+
+          let ellipsis = document.createElement("div");
+          ellipsis.className = "ellipsis";
+          ellipsis.innerText = pos.addr1;
+          let jibun = document.createElement("div");
+          jibun.className = "jibun ellipsis";
+          jibun.innerText = pos.addr1;
+          let bottom = document.createElement("div");
+          let link = document.createElement("a");
+          link.target = "_blank";
+          link.className = "link";
+          link.innerText = "바로가기";
+          bottom.appendChild(link);
+
+          desc.appendChild(ellipsis);
+          desc.appendChild(jibun);
+          desc.appendChild(bottom);
+
+          body.appendChild(imgDiv);
+          body.appendChild(desc);
+
+          content.appendChild(info);
+
+          overlay.setContent(content);
+
+          // $(document).on("click", "#close", function () {
+          //  overlay.setMap(null);
+          //});
+
+          // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+          kakao.maps.event.addListener(marker, "click", function () {
+            overlay.setMap(map);
+          });
+        });
 
         // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
         var bounds = new kakao.maps.LatLngBounds();
@@ -290,6 +335,7 @@
           // marker.setMap(map);
 
           // LatLngBounds 객체에 좌표를 추가합니다
+          //displayMarker(positions[i]);
           bounds.extend(positions[i].latlng);
         }
         setBounds();
@@ -319,53 +365,6 @@
         // 지도의 현재 레벨을 얻어옵니다
         var level = map.getLevel();
       });
-
-      // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-      if (navigator.geolocation) {
-        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-
-          var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message =
-              '<p style="padding:5px; position: relative; left: 45px;">현 위치</p>'; // 인포윈도우에 표시될 내용입니다
-
-          // 마커와 인포윈도우를 표시합니다
-          displayMarker(locPosition, message);
-        });
-      } else {
-        // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-          message = "geolocation을 사용할수 없어요..";
-
-        displayMarker(locPosition, message);
-      }
-
-      // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-      function displayMarker(locPosition, message) {
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: locPosition,
-        });
-
-        var iwContent = message, // 인포윈도우에 표시할 내용
-          iwRemoveable = true;
-
-        // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: iwContent,
-          removable: iwRemoveable,
-        });
-
-        // 인포윈도우를 마커위에 표시합니다
-        infowindow.open(map, marker);
-
-        // 지도 중심좌표를 접속위치로 변경합니다
-        map.setCenter(locPosition);
-      }
     </script>
     <script type="text/javascript" src="../js/common.js"></script>
   </body>
