@@ -121,6 +121,7 @@ input:read-only {
   color: #8b95a1;
   font-size: 0.8em;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .id-box {

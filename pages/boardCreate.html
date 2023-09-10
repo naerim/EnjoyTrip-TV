@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>여행정보 글 작성하기</title>
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/board.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/common.css" />
-    <script
-      src="https://kit.fontawesome.com/80680301df.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="header-container">
-        <div id="logo"><a href="/">Enjoy Trip</a></div>
-        <div id="menulist"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enjoy Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/boardCreate.css" />
+  <script src="https://kit.fontawesome.com/80680301df.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div id="logo"><a href="/">Enjoy Trip</a></div>
+      <div id="menulist"></div>
+    </div>
+    <i class="fa-solid fa-bars fa-2x" style="color: #454545" id="hamburger"></i>
+  </header>
+  <section>
+    <article>
+      <div>
+        <h2 id="ment">여행정보 글 작성하기</h2>
+        <h2 id="subment">나만의 여행 꿀팁을 공유해보세요.</h2>
       </div>
-      <i
-        class="fa-solid fa-bars fa-2x"
-        style="color: #454545"
-        id="hamburger"
-      ></i>
-    </header>
-    <!-- footer -->
-    <footer>
-      <div class="footer-container">
+      <div id="formBox">
+        <form id="articleForm">
+
+          <label for="userId">작성자 ID</label>
+          <input type="text" id="userId" name="userId" disabled required="required">
+
+          <label for="articleTitle">제목</label>
+          <input type="text" id="articleTitle" name="articleTitle" autocomplete="off">
+
+          <label for="content">내용</label>
+          <textarea id="content" name="content" cols="50" rows="20" required="required"></textarea>
+
+
+      </div>
+      <div id="btnBox">
+        <a href="board.html"><button type="button">닫기</button></a>
+        <button type="button" id="createBtn">작성하기</button>
+      </div>
+      </form>
+
+    </article>
+
+
+  </section>
+  <!-- footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <img src="../img/ssafy_logo.png" alt="" />
+      </div>
+      <div id="footer-right">
+        <p>이용약관 | 개인정보방침</p>
         <div>
-          <img src="../img/ssafy_logo.png" alt="" />
+          본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포
+          등을 금합니다.
         </div>
-        <div id="footer-right">
-          <p>이용약관 | 개인정보방침</p>
-          <div>
-            본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포
-            등을 금합니다.
-          </div>
-          <div>Copyright © SAMSUNG All Rights Reserved.</div>
-        </div>
+        <div>Copyright © SAMSUNG All Rights Reserved.</div>
       </div>
-    </footer>
-  </body>
-  <script type="text/javascript" src="../js/common.js"></script>
+    </div>
+  </footer>
+</body>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/boardCreat.js"></script>
+
 </html>

@@ -1,6 +1,11 @@
+
 // 회원들 아이디 정보 담은 배열
 let memberIdList = [];
-
+// 시작할때 회원들 관리할 배열이 로컬스토리지에 없으면 생성한다.
+if (localStorage.getItem("members") === null) {
+  var emptyArray = [];
+  localStorage.setItem("members", JSON.stringify(emptyArray));
+}
 // 회원의 아이디 정보 가져오기
 function getMembersLocalStorage() {
   let members = localStorage.getItem("members");
@@ -27,11 +32,12 @@ function initWindow() {
 document.querySelector("#userIdChkBtn").addEventListener("click", function () {
   let userIdV = document.querySelector("#userId").value;
   let userIdChkBtn = document.querySelector("#userIdChkBtn");
-
-  getMembersLocalStorage();
+  if (localStorage.getItem("members").length > 1) {
+    getMembersLocalStorage();
+  }
 
   for (i = 0; i < memberIdList.length; i++) {
-      console.log(memberIdList, userIdV);
+    console.log(memberIdList, userIdV);
     if (memberIdList[i] == userIdV) {
       alert("이미 존재하는 아이디입니다.");
       return;
@@ -59,8 +65,8 @@ document.querySelector("#signup-btn").addEventListener("click", function (e) {
   let region1 = document.querySelector("#region1");
   let region2 = document.querySelector("#region2");
 
-  if(userId.value=="" || username.value=="" || userPwd.value=="" || userPwdChk.value=="" 
-      || email1.value=="" || email2.value=="" || region1.value=="" || region2.value==""){
+  if (userId.value == "" || username.value == "" || userPwd.value == "" || userPwdChk.value == ""
+    || email1.value == "" || email2.value == "" || region1.value == "" || region2.value == "") {
     alert("값을 입력해주세요.");
     return;
   }
@@ -77,30 +83,30 @@ document.querySelector("#signup-btn").addEventListener("click", function (e) {
     return;
   }
 
-    let member = {
-        userId: userId.value,
-        username: username.value,
-        userPwd: userPwd.value,
-        email1: email1.value,
-        email2: email2.value,
-        region1: region1.value,
-        region1_name: region1.options[region1.selectedIndex].text,
-        region2: region2.value,
-        region2_name: region2.options[region2.selectedIndex].text,
-    }
-    
-   //ㄸㄸㄷ7 console.log(member);
-   // window.localStorage.setItem("member", JSON.stringify(member));
-    
-    let localMembers = window.localStorage.getItem("members");
-    if (localMembers === null) {
-        localMembers = [member];
-      } else {
-        localMembers = JSON.parse(localMembers);
-        localMembers.push(member);  
-      }
-      window.localStorage.setItem("members", JSON.stringify(localMembers));
+  let member = {
+    userId: userId.value,
+    username: username.value,
+    userPwd: userPwd.value,
+    email1: email1.value,
+    email2: email2.value,
+    region1: region1.value,
+    region1_name: region1.options[region1.selectedIndex].text,
+    region2: region2.value,
+    region2_name: region2.options[region2.selectedIndex].text,
+  }
 
-      alert(`${username.value}님 "${userId.value}" 아이디로 가입 정상 완료하였습니다.\n로그인 후 회원 전용 서비스를 이용하시기 바랍니다.`);
-      location.href = "login.html";
+  //ㄸㄸㄷ7 console.log(member);
+  // window.localStorage.setItem("member", JSON.stringify(member));
+
+  let localMembers = localStorage.getItem("members");
+  if (localMembers === null) {
+    localMembers = [member];
+  } else {
+    localMembers = JSON.parse(localMembers);
+    localMembers.push(member);
+  }
+  window.localStorage.setItem("members", JSON.stringify(localMembers));
+
+  alert(`${username.value}님 "${userId.value}" 아이디로 가입 정상 완료하였습니다.\n로그인 후 회원 전용 서비스를 이용하시기 바랍니다.`);
+  location.href = "login.html";
 });

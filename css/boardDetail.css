@@ -1,0 +1,16 @@
+#updateBtn {
+    display: none;
+}
+
+#cnt {
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #8b95a1;
+}
+
+
+article>div>div {
+    display: flex;
+}

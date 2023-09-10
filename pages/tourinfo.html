@@ -19,8 +19,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/key.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.2.0.min.js"
+    ></script>
     <link rel="stylesheet" href="../css/common.css" />
-    <title>지역관광정보</title>
+    <title>Enjoy Trip</title>
   </head>
 
   <body>
@@ -29,11 +33,6 @@
       <div class="header-container">
         <div id="logo"><a href="/">Enjoy Trip</a></div>
         <div id="menulist">
-          <div id="menuitem"><a href="tourinfo.html">지역별여행지</a></div>
-          <div id="menuitem"><a href="plan.html">나의여행계획</a></div>
-          <div id="menuitem"><a href="board.html">공유게시판</a></div>
-          <div id="menuitem"><a href="signup.html">회원가입</a></div>
-          <div id="menuitem"><a href="login.html">로그인</a></div>
         </div>
       </div>
       <i
@@ -43,24 +42,12 @@
       ></i>
     </header>
     <!-- Contents -->
-    <section>
+    <section id="top-section">
       <!-- ment -->
       <div class="ment box">
         <h2>여행 가고 싶은 지역을</h2>
         <h2>검색해보세요.</h2>
       </div>
-      <!-- searchBar -->
-      <!-- <div id="searchBox" class="box">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="무엇이든 찾아보세요"
-        /><img
-          id="searchImg"
-          src="../img/tourinfo/magnifying-glass-solid.png"
-          alt=""
-        />
-      </div> -->
 
       <form id="search-form" action="#">
         <select name="search-area" id="search-area" class="selectBox">
@@ -91,16 +78,15 @@
       <div id="mapBox">
         <div id="map"></div>
       </div>
-
-      <div id="youtubeBox" class="box">
+    </section>
+    <section id="youtubeBox">        
         <p>바로 유튜브에서 찾아볼까요?</p>
         <p>선택한 관광지의 영상을 확인할 수 있어요.</p>
         <div id="btnBox">
           <button id="utBtn">검색하기</button>
         </div>
         <div id="flexBox"></div>
-      </div>
-    </section>
+      </div></section>
     <!-- footer -->
     <footer>
       <div class="footer-container">
@@ -117,256 +103,8 @@
         </div>
       </div>
     </footer>
-    <!-- kakao api연결 -->
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f969680d19602de1fea5ade9c6d7e784"></script>
-    <script>
-      // 모든 지역정보를 가져올 url설정(공공데이터포털)
-      let areaUrl =
-        "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
-        serviceKey +
-        "&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json";
-      fetch(areaUrl)
-        .then((response) => response.json())
-        .then((data) => makeOption(data));
-
-      // 옵션에 값 채우기!
-      function makeOption(data) {
-        // 지역을 선택한 상황
-        let areas = data.response.body.items.item;
-        let sel = document.getElementById("search-area");
-        areas.forEach((area) => {
-          let opt = document.createElement("option");
-          opt.setAttribute("value", area.code);
-          opt.setAttribute("class", "opAreas");
-          opt.appendChild(document.createTextNode(area.name));
-          sel.appendChild(opt);
-        });
-      }
-
-      // ===========지역변하면 시군구 받아오기======================
-      document.querySelector("#search-area").addEventListener("change", (e) => {
-        let subOptionsLen =
-          document.querySelector("#search-city").options.length;
-        let target = e.target.value;
-        // 검색하면됨
-        let regionUrl =
-          "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
-          serviceKey +
-          `&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&areaCode=${target}&_type=json`;
-        fetch(regionUrl)
-          .then((response) => response.json())
-          .then((data) => makeSubOption(data));
-      });
-
-      function makeSubOption(data) {
-        let citys = data.response.body.items.item;
-        // console.log(city);
-        let sel = document.getElementById("search-city");
-        // 이전에 있던 값 지우기.
-        sel.innerHTML = '<option value="-1">시군구</option>';
-        citys.forEach((city) => {
-          let opt = document.createElement("option");
-          opt.setAttribute("value", city.code);
-          opt.setAttribute("class", "opcity");
-          opt.appendChild(document.createTextNode(city.name));
-          sel.appendChild(opt);
-        });
-      }
-
-      // =======================================
-
-      // 선택한 지역의 시군구 가져오기.
-      function makeCityOption() {}
-
-      let dataList = [];
-      // 검색버튼을 누르면 지역.값, 시군구.값, 관광지유형 정보로 관광데이터 받아오기.
-      document
-        .querySelector("#search-form input")
-        .addEventListener("click", (e) => {
-          // 데이터를 저장할 배열 초기화
-          dataList = [];
-          // 지역값
-          let selectArea = document.querySelector("#search-area").value;
-          // 시군구값
-          let selectCity = document.querySelector("#search-city").value;
-
-          // 관광유형
-          let selectContent =
-            document.querySelector("#search-content-id").value;
-          // console.log(selectArea)
-          // console.log(selectCity)
-          // console.log(selectContent)
-
-          // 요청보내자 fetch
-          let searchURL =
-            "https://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=" +
-            serviceKey +
-            `&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A&contentTypeId=${selectContent}&areaCode=${selectArea}&sigunguCode=${selectCity}`;
-          fetch(searchURL)
-            .then((response) => response.json())
-
-            .then((data) => {
-              addList(data);
-              // console.log(dataList)
-              showMarks();
-            });
-        });
-
-      // 받아온 관광데이터를 배열에 저장한다.
-      function addList(data) {
-        let curDatas = data.response.body.items.item;
-        curDatas.forEach((curData) => {
-          dataList.push(curData);
-        });
-      }
-
-      //===============
-      // 저장한 배열을 순회하면서 위도경도 가져와
-
-      function showMarks() {
-        // 기존에 표시된 맵을 지우도 다시 만든다.
-        document.querySelector("#map").innerHTML = "";
-        var map = new kakao.maps.Map(mapContainer, mapOption);
-        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-        var zoomControl = new kakao.maps.ZoomControl();
-        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-        // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-        kakao.maps.event.addListener(map, "zoom_changed", function () {
-          // 지도의 현재 레벨을 얻어옵니다
-          var level = map.getLevel();
-        });
-        var positions = [];
-        dataList.forEach((e) => {
-          let obj = {
-            title: e.title,
-            latlng: new kakao.maps.LatLng(e.mapy, e.mapx),
-          };
-          positions.push(obj);
-          // console.log(e.mapy); // 위도
-          // console.log(e.mapx); // 경도
-        });
-        // console.log(positions)
-        // 마커 이미지의 이미지 주소입니다
-        var imageSrc =
-          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-        markList = [];
-        for (var i = 0; i < positions.length; i++) {
-          // 마커 이미지의 이미지 크기 입니다
-          var imageSize = new kakao.maps.Size(24, 35);
-
-          // 마커 이미지를 생성합니다
-          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-          // 마커를 생성합니다
-          var marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng, // 마커를 표시할 위치
-            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
-            clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-          });
-          markList.push(marker);
-
-          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          var iwContent = `<div style="padding:5px;">${positions[i].title}</div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            iwRemoveable = true;
-          // 마커 위에 표시할 인포윈도우를 생성한다
-          var infowindow = new kakao.maps.InfoWindow({
-            content: iwContent, // 인포윈도우에 표시할 내용
-            removable: iwRemoveable,
-          });
-
-          // 마커 위에 인포윈도우를 표시합니다
-        }
-
-        // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-        var bounds = new kakao.maps.LatLngBounds();
-
-        var i, marker;
-        for (i = 0; i < positions.length; i++) {
-          // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-          // marker.setMap(map);
-
-          // LatLngBounds 객체에 좌표를 추가합니다
-          bounds.extend(positions[i].latlng);
-        }
-        setBounds();
-        function setBounds() {
-          // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
-          // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
-          map.setBounds(bounds);
-        }
-      }
-
-      //=============kakaomap==================
-      // KAKAO MAP API
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
-
-      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-      // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-      var zoomControl = new kakao.maps.ZoomControl();
-      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-      // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-      kakao.maps.event.addListener(map, "zoom_changed", function () {
-        // 지도의 현재 레벨을 얻어옵니다
-        var level = map.getLevel();
-      });
-
-      // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-      if (navigator.geolocation) {
-        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-
-          var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message =
-              '<p style="padding:5px; position: relative; left: 45px;">현 위치</p>'; // 인포윈도우에 표시될 내용입니다
-
-          // 마커와 인포윈도우를 표시합니다
-          displayMarker(locPosition, message);
-        });
-      } else {
-        // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-          message = "geolocation을 사용할수 없어요..";
-
-        displayMarker(locPosition, message);
-      }
-
-      // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-      function displayMarker(locPosition, message) {
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: locPosition,
-        });
-
-        var iwContent = message, // 인포윈도우에 표시할 내용
-          iwRemoveable = true;
-
-        // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: iwContent,
-          removable: iwRemoveable,
-        });
-
-        // 인포윈도우를 마커위에 표시합니다
-        infowindow.open(map, marker);
-
-        // 지도 중심좌표를 접속위치로 변경합니다
-        map.setCenter(locPosition);
-      }
-    </script>
+    <script type="text/javascript" src="../js/tourinfo.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
   </body>
 </html>
