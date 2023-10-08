@@ -1,3 +1,36 @@
+function getRegion() {}
+var GetAreas = setInterval(() => {
+  let areas = document.querySelectorAll(".opAreas");
+  areas.forEach((el) => {
+    if (areas.length != 0) {
+      if (el.value ===JSON.parse(localStorage.getItem("member")).region1) {
+        el.selected = true;
+        document.querySelector("#region1").dispatchEvent(new Event('change'));
+      };
+      clearInterval(GetAreas)
+    }
+  }, 1000);  
+})
+var GetCityInterval = setInterval(() => {
+  getCity();
+}, 1000);
+
+function getCity() {
+  let cities = document.querySelectorAll(".opcity");
+  // console.log(cities)
+  var GetCities = setInterval(() => {
+  if (cities.length != 0) {
+    cities.forEach((el) => {
+      if (el.value === JSON.parse(localStorage.getItem("member")).region2) {
+        el.selected = true;
+        clearInterval(GetCityInterval)
+      }
+    })
+  }
+    
+  }, 1000);
+}
+
 // 로그아웃
 document.querySelector("#logout-btn").addEventListener("click", function () {
   window.localStorage.removeItem("member");
@@ -112,3 +145,4 @@ document.querySelector("#withdraw-btn").addEventListener("click", function (e) {
         }
     }
 });
+
